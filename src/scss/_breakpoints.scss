@@ -1,0 +1,31 @@
+// Define breakpoints
+$mobile-sm: 320px; // 320 x 568 (16:9 typical on small smartphones)
+$mobile-md: 480px; // 480 x 853 (16:9 or 18:9 common for larger phones)
+$tablet: 768px; // 768 x 1024 (4:3, common for tablets like iPads)
+$small-laptop: 1024px; // 1024 x 1366 (3:2, typical for small laptops like Surface Pro)
+$desktop-sm: 1280px; // 1280 x 720 (16:9 HD) or 1280 x 800 (16:10, laptops)
+$desktop-lg: 1440px; // 1440 x 900 (16:10, common on large laptops)
+$desktop-xl: 1920px; // 1920 x 1080 (16:9, Full HD standard)
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile-sm {
+    @media (min-width: #{$mobile-sm}) { @content; }
+  } @else if $breakpoint == mobile-md {
+    @media (min-width: #{$mobile-md}) { @content; }
+  }
+  @else if $breakpoint == tablet {
+    @media (min-width: #{$tablet}) { @content; }
+  }
+  @else if $breakpoint == small-laptop {
+    @media (min-width: #{$small-laptop}) { @content; }
+  }
+  @else if $breakpoint == desktop-sm {
+    @media (min-width: #{$desktop-sm}) { @content; }
+  }
+  @else if $breakpoint == desktop-lg {
+    @media (min-width: #{$desktop-lg}) { @content; }
+  }
+  @else if $breakpoint == desktop-xl {
+    @media (min-width: #{$desktop-lg}) { @content; }
+  }
+}

@@ -1,0 +1,67 @@
+@use './_breakpoints' as *;
+
+section.about {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .empty {
+    background: var(--grey);
+    border-radius: var(--border-radius);
+    flex: 1;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 2;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      border-radius: var(--border-radius);
+      padding: var(--gutter);
+      flex: 1;
+    }
+
+    .description {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pink);
+      border-radius: var(--border-radius);
+      padding: var(--gutter);
+      color: var(--black);
+      flex: 2;
+    }
+  }
+}
+
+// Media Queries
+@include respond(tablet) {
+  section.about {
+    flex-direction: row;
+
+    .empty {
+      flex: 2;
+    }
+
+    article {
+      flex: 3;
+
+      .title {
+        justify-content: left;
+        align-items: flex-end;
+        flex: 2;
+      }
+
+      .description {
+        justify-content: left;
+        flex: 1;
+      }
+    }
+  }
+}

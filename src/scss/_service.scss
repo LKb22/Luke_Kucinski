@@ -1,0 +1,134 @@
+@use './_breakpoints' as *;
+
+section.service {
+  article {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: var(--green);
+    border-radius: var(--border-radius);
+    flex: 1;
+
+    img {
+      width: 40%;   // The image takes up the full width of its parent
+      height: 40%;  // The image takes up the full height of its parent
+      object-fit: contain;  // Ensures the image maintains its aspect ratio
+
+      // Optional dynamic sizing (e.g., clamp for more control)
+      max-width: 40%;   // Ensures image width does not exceed the parent container
+      max-height: 40%;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--text-background);
+    padding: var(--gutter);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    flex: 2;
+
+    a {
+      transition:
+        filter 2s cubic-bezier(.77,.28,.42,.93),
+        color 2s cubic-bezier(.77,.28,.42,.93);
+      will-change: filter, color;
+
+      &:hover {
+        color: var(--white) !important;
+        filter: blur(20px);
+      }
+    }
+  }
+}
+
+section.service.service-html {
+
+  figure {
+    background: var(--green);
+
+    img {
+      animation-name: float;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: cubic-bezier(.77,.28,.42,.93);
+    }
+  }
+
+  .text h2, .text a {
+    color: var(--pink);
+  }
+}
+
+section.service.service-css {
+
+  figure {
+    background: var(--blue);
+
+    img {
+      animation: spin 2s linear infinite;
+    }
+  }
+
+  .text h2, .text a {
+    color: var(--green);
+  }
+}
+
+section.service.service-js {
+
+  figure {
+    background: var(--pink);
+
+    img {
+      animation: slide 2s linear infinite alternate;
+      animation-timing-function: cubic-bezier(.77,.28,.42,.93);
+    }
+  }
+
+  .text h2, .text a {
+    color: var(--blue);
+  }
+}
+
+section.service.service-html.sticky,
+section.service.service-css.sticky,
+section.service.service-js.sticky {
+  position: sticky;
+  margin-top: 60px;
+}
+
+// Media Queries
+@include respond(tablet) {
+  section.service {
+    article {
+      flex-direction: row;
+    }
+
+    figure {
+      flex: 1.5;
+    }
+
+    .text {
+      flex: 1;
+      align-items: flex-start;
+    }
+  }
+
+  section.service.service-html.sticky,
+  section.service.service-css.sticky,
+  section.service.service-js.sticky {
+    margin-top: 100px;
+  }
+}

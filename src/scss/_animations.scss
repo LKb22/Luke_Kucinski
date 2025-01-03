@@ -1,0 +1,55 @@
+@use './_breakpoints' as *;
+
+@keyframes float {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-70%);
+  }
+  100% {
+    transform: translateX(70%);
+  }
+}
+
+// Define the breakpoints and keyframe values
+$jump-values: (
+  mobile-sm: (70px, 180px),
+  mobile-md: (70px, 260px),
+  tablet: (110px, calc(100vh - 100px)),
+  small-laptop: (110px, calc(100vh - 100px)),
+  desktop-sm: (110px, calc(100vh - 100px)),
+  desktop-lg: (110px, calc(100vh - 120px)),
+  desktop-xl: (110px, calc(100vh - 160px))
+);
+
+@each $breakpoint, $values in $jump-values {
+  $start: nth($values, 1);
+  $end: nth($values, 2);
+
+  @include respond($breakpoint) {
+    @keyframes jump {
+      0% {
+        top: #{$start};
+      }
+      100% {
+        top: #{$end};
+      }
+    }
+  }
+}
